@@ -7,8 +7,8 @@
       amazon.aws.s3_object_info:
         bucket_name: "{{ s3_bucket_name }}"
         object_name: "{{ s3_file_name }}"
-        access_key: "{{ aws_access_key_id }"
-        secret_key: "{{ aws_secret_access_key }"
+        access_key: "{{ aws_access_key_id }}"
+        secret_key: "{{ aws_secret_access_key }}"
       register: s3_object_info
 
     - name: Fail if file does not exist in S3 bucket
