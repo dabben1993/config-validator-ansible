@@ -17,7 +17,7 @@
         msg: "all good"
 
     - name: Download a file from S3 bucket
-      aws_s3_object:
+      aws.s3.s3_object:
         bucket: "{{ s3_bucket_name }}"
         region: "{{ aws_region }}"
         object: "{{ s3_file_name }}"
