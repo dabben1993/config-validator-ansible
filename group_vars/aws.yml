@@ -2,7 +2,7 @@
 s3_bucket_name: "timpabucket"
 s3_destination_bucket: ""
 s3_file_name: "test.yml"
-s3_file_local_destination: "/output"
+s3_file_local_destination: "/output/"
 aws_region: "us-east-2"
 aws_access_key_id: "{{ lookup('env', 'AWS_ACCESS_KEY_ID') }}"
 aws_secret_access_key: "{{ lookup('env', 'AWS_SECRET_ACCESS_KEY') }}"
