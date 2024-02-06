@@ -1,5 +1,6 @@
 ---
+
 - name: Test S3 Interaction
   hosts: localhost
-  debug:
-    msg: "{{ s3_file_name }}"
+  roles:
+    - s3_interaction
