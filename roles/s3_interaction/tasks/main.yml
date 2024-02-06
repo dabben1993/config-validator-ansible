@@ -1,9 +1,14 @@
 ---
 
+- name: debugging
+  debug:
+    msg: "{{ aws_access_key_id }} + {{ aws_secret_access_key }}"
+
+
 - name: Download file from S3 bucket
   block:
 
-    - name: Check if file exists in S3 bucket
+    - name: List objects in bucket
       aws_s3:
         bucket: "{{ s3_bucket_name }}"
         mode: list
