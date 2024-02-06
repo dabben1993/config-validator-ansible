@@ -8,6 +8,7 @@
         bucket: "{{ s3_bucket_name }}"
         object: "{{ s3_file_name }}"
         dest: "{{ s3_file_local_destination }}"
+        region: "{{ aws_region }}"
         mode: get
         aws_access_key: "{{ aws_access_key_id }}"
         aws_secret_key: "{{ aws_secret_access_key }}"
