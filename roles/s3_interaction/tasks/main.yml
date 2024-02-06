@@ -3,7 +3,7 @@
 - name: Download file from S3 bucket
   block:
 
-    - name: Download file from s3
+    - name: List files from S3 bucket
       aws_s3:
         bucket: "{{ s3_bucket_name }}"
         region: "{{ aws_region }}"
@@ -15,6 +15,22 @@
     - name: debug
       debug:
         msg: "{{s3_download_result.s3_keys}}"
+
+    - name: Download a file from S3 bucket
+      aws_s3:
+        bucket: "{{ s3_bucket_name }}"
+        region: "{{ aws_region }}"
+        object: "{{ s3_file_name }}"
+        dest: "{{ s3_file_local_destination }}"
+        mode: get
+        access_key: "{{ aws_access_key_id }}"
+        secret_key: "{{ aws_secret_access_key }}"
+      register: result
+
+    - name: debug
+      debug:
+        msg: "{{ result.msg }}"
+      when: result.changed
 
   rescue:
     - name: Log error message
