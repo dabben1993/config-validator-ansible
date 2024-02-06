@@ -6,8 +6,9 @@
   vars_files:
     - group_vars/aws.yml
     - group_vars/bitbucket.yml
+
   tasks:
-    - name: download file from s3
+    - name: Download file
       s3:
         bucket: "{{ s3_bucket_name }}"
         object: "{{ s3_file_name }}"
@@ -15,4 +16,4 @@
         mode: get
         aws_access_key: "{{ aws_access_key_id }}"
         aws_secret_key: "{{ aws_secret_access_key }}"
-      register: s3_download_result
+      register: s3_download
