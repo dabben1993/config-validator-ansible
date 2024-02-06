@@ -1,17 +1,11 @@
 ---
-- name: debugging
-  debug:
-    msg: '{{ s3_file_name }}'
 
 - name: Download file from S3 bucket
   block:
 
     - name: Check if file exists in S3 bucket
       stat:
-        path: "{{ s3_file_name }}"
-        bucket: "{{ s3_bucket_name }}"
-        aws_access_key: "{{ aws_access_key_id }}"
-        aws_secret_key: "{{ aws_secret_access_key }}"
+        path: "s3://{{ s3_bucket_name }}/{{ s3_file_name }}"
       register: s3_file_stat
 
     - name: Fail if file does not exist in S3 bucket
