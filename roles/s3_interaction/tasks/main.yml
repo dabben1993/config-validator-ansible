@@ -4,7 +4,7 @@
   block:
 
     - name: Download file from S3 bucket
-      aws_s3:
+      s3:
         bucket: "{{ s3_bucket_name }}"
         object: "{{ s3_file_name }}"
         dest: "{{ s3_file_local_destination }}"
