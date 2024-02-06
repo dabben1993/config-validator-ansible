@@ -1,0 +1,5 @@
+---
+- name: Test S3 Interaction
+  hosts: localhost
+  roles:
+    - s3_interaction
