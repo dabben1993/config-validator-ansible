@@ -8,8 +8,8 @@
         bucket: "{{ s3_bucket_name }}"
         region: "{{ aws_region }}"
         mode: list
-        aws_access_key: "{{ aws_access_key_id }}"
-        aws_secret_key: "{{ aws_secret_access_key }}"
+        access_key: "{{ aws_access_key_id }}"
+        secret_key: "{{ aws_secret_access_key }}"
       register: s3_download_result
 
     - name: debug
