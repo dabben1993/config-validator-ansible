@@ -2,18 +2,8 @@
 
 - name: Test S3 Interaction
   hosts: localhost
-  become: true
   vars_files:
     - group_vars/aws.yml
     - group_vars/bitbucket.yml
-
-  tasks:
-    - name: Download file
-      aws_s3:
-        bucket: "{{ s3_bucket_name }}"
-        object: "{{ s3_file_name }}"
-        dest: "{{ s3_file_local_destination }}"
-        mode: get
-        aws_access_key: "{{ aws_access_key_id }}"
-        aws_secret_key: "{{ aws_secret_access_key }}"
-      register: s3_download
+  roles:
+    - s3_interaction
