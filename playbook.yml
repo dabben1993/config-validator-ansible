@@ -2,5 +2,8 @@
 
 - name: Test S3 Interaction
   hosts: localhost
+  vars_files:
+    - group_vars/aws.yml
+    - group_vars/bitbucket.yml
   roles:
     - s3_interaction
