@@ -1,6 +1,10 @@
 ---
 - name: Download file from S3 bucket
   block:
+    - name:
+        debug:
+          msg: "s3_file_name: {{ s3_file_name}}"
+
     - name: Check if file exists in S3 bucket
       stat:
         path: "{{ s3_file_name }}"
