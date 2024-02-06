@@ -10,7 +10,6 @@
         mode: list
         access_key: "{{ aws_access_key_id }}"
         secret_key: "{{ aws_secret_access_key }}"
-        validate_certs: true
       register: s3_download_result
 
     - name: debug
@@ -18,7 +17,7 @@
         msg: "all good"
 
     - name: Download a file from S3 bucket
-      aws_s3:
+      aws_s3_object:
         bucket: "{{ s3_bucket_name }}"
         region: "{{ aws_region }}"
         object: "{{ s3_file_name }}"
@@ -26,7 +25,6 @@
         mode: get
         access_key: "{{ aws_access_key_id }}"
         secret_key: "{{ aws_secret_access_key }}"
-        validate_certs: no
       register: result
 
     - name: debug
