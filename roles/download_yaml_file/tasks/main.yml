@@ -1,0 +1,30 @@
+---
+- name: Download file from S3 bucket
+  block:
+    - name: Check if file exists in S3 bucket
+      stat:
+        path: "{{ s3_file_name }}"
+        bucket: "{{ s3_bucket_name }}"
+        aws_access_key: "{{ aws_access_key_id }}"
+        aws_secret_key: "{{ aws_secret_access_key }}"
+      register: s3_file_stat
+
+    - name: Fail if file does not exist in S3 bucket
+      fail:
+        msg: "File {{ s3_file_name }} does not exist in S3 bucket {{ s3_bucket_name }}"
+      when: s3_file_stat.stat.exists == False
+
+    - name: Download file from S3 bucket
+      aws_s3:
+        bucket: "{{ s3_bucket_name }}"
+        object: "{{ s3_file_name }}"
+        dest: "{{ s3_file_local_destination }}"
+        mode: get
+        aws_access_key: "{{ aws_access_key_id }}"
+        aws_secret_key: "{{ aws_secret_access_key }}"
+      register: s3_download_result
+
+  rescue:
+    - name: Log error message
+      debug:
+        msg: "Failed to download file from S3 bucket: {{ s3_download_result.msg}} "
