@@ -18,7 +18,7 @@
 
     - name: Download a file from S3 bucket
       amazon.aws.s3_object:
-        bucket: "{{ s3_bucket_name }}"
+        bucket: "{{ s3_origin_bucket }}"
         region: "{{ aws_region }}"
         object: "{{ s3_file_name }}"
         dest: "{{ s3_file_local_destination }}{{ s3_file_name }}"
@@ -31,6 +31,15 @@
       debug:
         msg: "{{ result.msg }}"
       when: result.changed
+
+    - name: Upload file to S3 bucket
+      amazon.aws.s3_object:
+        bucket: "{{ s3_destination_bucket }}"
+        region: "{{ aws_region }}"
+        src: "{{ s3_file_local_destination }}{{ s3_file_name }}"
+        mode: put
+        access_key: "{{ aws_access_key_id }}"
+        secret_key: "{{ aws_secret_access_key }}"
 
   rescue:
     - name: Log error message

@@ -1,5 +1,5 @@
 ---
-s3_bucket_name: "timpabucket"
+s3_origin_bucket: "timpabucket"
 s3_destination_bucket: ""
 s3_file_name: "test.yml"
 s3_file_local_destination: "output/"
