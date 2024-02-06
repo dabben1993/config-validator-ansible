@@ -3,14 +3,14 @@
 - name: Download file from S3 bucket
   block:
 
-    - name: Download file from bucket
-      s3:
-        aws_access_key: "{{ aws_access_key_id }}"
-        aws_secret_key: "{{ aws_secret_access_key }}"
+    - name: Download file from S3 bucket
+      aws_s3:
         bucket: "{{ s3_bucket_name }}"
         object: "{{ s3_file_name }}"
         dest: "{{ s3_file_local_destination }}"
         mode: get
+        aws_access_key: "{{ aws_access_key_id }}"
+        aws_secret_key: "{{ aws_secret_access_key }}"
       register: s3_download_result
 
   rescue:
