@@ -1,6 +1,7 @@
 ---
 
 - name: Download file from S3 bucket
+  become: true
   block:
 
     - name: Download file from s3
