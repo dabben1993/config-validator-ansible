@@ -2,8 +2,3 @@
 - name: Debug s3_file_name variable
   debug:
     msg: "s3_file_name: {{ s3_file_name }}"
-
-- name: Test S3 Interaction
-  hosts: localhost
-  roles:
-    - s3_interaction
