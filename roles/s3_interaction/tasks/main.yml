@@ -4,6 +4,7 @@
   become: true
   block:
 
+
     - name: Download file from s3
       s3:
         bucket: "{{ s3_bucket_name }}"
