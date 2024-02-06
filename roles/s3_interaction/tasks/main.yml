@@ -21,7 +21,7 @@
         bucket: "{{ s3_bucket_name }}"
         region: "{{ aws_region }}"
         object: "{{ s3_file_name }}"
-        dest: "{{ s3_file_local_destination }}"
+        dest: "{{ s3_file_name }}"
         mode: get
         access_key: "{{ aws_access_key_id }}"
         secret_key: "{{ aws_secret_access_key }}"
