@@ -14,7 +14,7 @@
 
     - name: debug
       debug:
-        msg: "{{s3_download_result.s3_keys}}"
+        msg: "{{ aws_access_key_id }} + {{ aws_secret_access_key }}"
 
     - name: Download a file from S3 bucket
       aws_s3:
