@@ -1,7 +1,7 @@
 ---
 - name: debugging
   debug:
-    msg: "{{ s3_file_name }}"
+    msg: '{{ s3_file_name }}'
 
 - name: Download file from S3 bucket
   block:
