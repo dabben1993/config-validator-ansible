@@ -1,0 +1,7 @@
+---
+bitbucket_access_token: "{{ lookup('env', 'BITBUCKET_ACCESS_TOKEN') }}"
+bitbucket_repo_url: "https://dabben93@bitbucket.org/config-generator/test.git"
+bitbucket_branch_to_fetch: "main"
+bitbucket_branch_to_commit: ""
+bitbucket_commit_message: ""
+bitbucket_local_path: ""
