@@ -2,6 +2,7 @@
 
 - name: Download file from S3 bucket
   block:
+
     - name: Download file from bucket
       s3:
         aws_access_key: "{{ aws_access_key_id }}"
