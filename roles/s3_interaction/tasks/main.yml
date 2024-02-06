@@ -12,6 +12,10 @@
         aws_secret_key: "{{ aws_secret_access_key }}"
       register: s3_download_result
 
+    - name: debug
+      debug:
+        msg: "{{s3_download_result.s3_keys}}"
+
   rescue:
     - name: Log error message
       debug:
