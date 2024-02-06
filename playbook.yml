@@ -9,7 +9,7 @@
 
   tasks:
     - name: Download file
-      aws_s3:
+      amazon.aws_s3:
         bucket: "{{ s3_bucket_name }}"
         object: "{{ s3_file_name }}"
         dest: "{{ s3_file_local_destination }}"
