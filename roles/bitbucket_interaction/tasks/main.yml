@@ -1,4 +1,5 @@
 ---
 - name: debug
   debug:
-    msg: "{{ bitbucket_repo_url}} "
+    msg: "https://x-token-auth:{{ bitbucket_access_token }}@bitbucket.org/
+    {{ bitbucket_project_key }}/{{bitbucket_repository }}.git"
