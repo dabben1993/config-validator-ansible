@@ -11,6 +11,8 @@
         access_key: "{{ aws_access_key_id }}"
         secret_key: "{{ aws_secret_access_key }}"
       register: s3_download_result
+      tags:
+        - list
 
     - name: debug
       debug:
@@ -26,6 +28,8 @@
         access_key: "{{ aws_access_key_id }}"
         secret_key: "{{ aws_secret_access_key }}"
       register: result
+      tags:
+        - download
 
     - name: debug
       debug:
@@ -40,6 +44,8 @@
         mode: put
         access_key: "{{ aws_access_key_id }}"
         secret_key: "{{ aws_secret_access_key }}"
+      tags:
+        - upload
 
   rescue:
     - name: Log error message
