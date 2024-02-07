@@ -3,6 +3,7 @@
   git:
     repo: "{{ bitbucket_repo_url }}"
     dest: "{{ bitbucket_local_path }}"
+    version: "{{ bitbucket_base_branch }}"
     clone: yes
   register: bitbucket_repo
 
