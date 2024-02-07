@@ -5,7 +5,30 @@
     dest: "{{ bitbucket_local_path }}"
     clone: yes
   register: bitbucket_repo
+  tags:
+    - clone
 
-- name: debugging
-  debug:
-    msg: "{{ bitbucket_repo.git_dir_before }} | {{ bitbucket_repo.git_dir_now }}"
+- name: Create a new branch
+  git:
+    repo: "{{ bitbucket_repo_url }}"
+    dest: "{{ bitbucket_local_path }}/"
+    branch: "{{ bitbucket_branch_to_commit }}"
+    state: present
+
+- name: Add file
+  copy:
+    content: |
+      "String"
+    dest: "{{ bitbucket_local_path }}/output/new_file.txt"
+  register: new_file
+
+- name: Commit and push to Bitbucket
+  git:
+    repo: "{{ bitbucket_repo_url }}"
+    dest: "{{ bitbucket_local_path }}"
+    src: "{{ new_file.dest }}"
+    remote: origin
+    branch: "{{ bitbucket_branch_to_commit }}"
+    force: yes
+    commit_msg: "{{ bitbucket_commit_message }}"
+    push: yes
