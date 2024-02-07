@@ -20,7 +20,7 @@
     chdir: "{{ bitbucket_local_path }}"
 
 - name: Add directory
-  command: mkdir ouptut
+  command: mkdir output
   args:
     chdir: "{{ bitbucket_local_path }}"
 
