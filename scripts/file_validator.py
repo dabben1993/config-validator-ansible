@@ -1,6 +1,5 @@
 import json
 import os
-from dataclasses import asdict
 
 from structlog import get_logger
 import cerberus
