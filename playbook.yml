@@ -6,4 +6,4 @@
     - group_vars/aws.yml
     - group_vars/bitbucket.yml
   roles:
-    - bitbucket_interaction
+    - validate_yaml_file

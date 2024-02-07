@@ -3,9 +3,8 @@
   command: >
     python "../files/file_validator.py"
     --schema-path="../files/cerberus_schema.yml"
-    --file-path="{{ s3_file_path }}"
-    --json-output-path="{{ json_output_path }}"
-    --destination="{{ destination }}"
+    --file-path="test5.yml"
+    --destination="output"
   register: file_validator_output
 
 - name: Show output of FileValidator script

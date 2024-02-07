@@ -12,10 +12,9 @@ log = get_logger()
 
 class FileValidator:
 
-    def __init__(self, schema_path, file_path, json_output_path=None, destination=None, file_name=None):
+    def __init__(self, schema_path, file_path, destination=None, file_name=None):
         self.schema_path = schema_path
         self.file_path = file_path
-        self.json_output_path = json_output_path
         self.destination = destination
         self.file_name = file_name
         self.validator = self.load_schema()
