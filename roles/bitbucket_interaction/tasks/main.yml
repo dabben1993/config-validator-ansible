@@ -5,8 +5,6 @@
     dest: "{{ bitbucket_local_path }}"
     clone: yes
   register: bitbucket_repo
-  tags:
-    - clone
 
 - name: Create a new branch
   git:
