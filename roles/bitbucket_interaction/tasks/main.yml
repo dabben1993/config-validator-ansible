@@ -24,6 +24,11 @@
   args:
     chdir: "{{ bitbucket_local_path }}"
 
+- name: Add directory
+  command: mkdir ouptut
+  args:
+    chdir: "{{ bitbucket_local_path }}"
+
 - name: Add file
   command: mkdir ouptut
   args:
