@@ -12,8 +12,9 @@
   git:
     repo: "{{ bitbucket_repo_url }}"
     dest: "{{ bitbucket_local_path }}/"
-    branch: "{{ bitbucket_branch_to_commit }}"
-    state: present
+    ref: "{{ bitbucket_branch_to_commit }}"
+    checkout: yes
+    force: yes
 
 - name: Add file
   copy:
