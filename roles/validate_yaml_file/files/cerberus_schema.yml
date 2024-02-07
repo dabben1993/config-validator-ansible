@@ -1,0 +1,29 @@
+---
+config:
+  type: dict
+  schema:
+    database:
+      type: dict
+      schema:
+        host:
+          type: string
+          required: true
+        port:
+          type: integer
+          required: true
+        username:
+          type: string
+          required: true
+        password:
+          type: string
+          required: true
+    logging:
+      type: dict
+      schema:
+        level:
+          type: string
+          allowed: ['DEBUG', 'INFO', 'WARNING', 'ERROR', 'CRITICAL']
+          required: true
+        file_path:
+          type: string
+          required: true

@@ -49,8 +49,3 @@
   command: git push origin "{{ bitbucket_branch_to_commit }}"
   args:
     chdir: "{{ bitbucket_local_path }}"
-
-- name: Delete local branch
-  command: git branch -d "{{ bitbucket_branch_to_commit }}"
-  args:
-    chdir: "{{bitbucket_local_path }}"

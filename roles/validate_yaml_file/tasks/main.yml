@@ -1,0 +1,13 @@
+---
+- name: Run FileValidator script
+  command: >
+    python "../files/file_validator.py"
+    --schema-path="../files/cerberus_schema.yml"
+    --file-path="{{ s3_file_path }}"
+    --json-output-path="{{ json_output_path }}"
+    --destination="{{ destination }}"
+  register: file_validator_output
+
+- name: Show output of FileValidator script
+  debug:
+    msg: "{{ file_validator_output.stdout_lines }}"
