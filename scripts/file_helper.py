@@ -13,6 +13,7 @@ def save_as_json(data, file_name, output_directory):
         json_output_path = os.path.join(output_directory, file_name + ".json")
         with open(json_output_path, 'w') as json_output_file:
             json.dump(data, json_output_file, indent=2)
+        print("saved")
         log.info("File saved as JSON", data=data, file_path=json_output_path)
     except Exception as e:
         log.error("Error saving JSON file", error=str(e))
