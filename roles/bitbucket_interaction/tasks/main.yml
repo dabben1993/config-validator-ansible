@@ -6,6 +6,13 @@
     clone: yes
   register: bitbucket_repo
 
+- name: Checkout the base branch
+  git:
+    repo: "{{ bitbucket_repo_url }}"
+    dest: "{{ bitbucket_local_path }}"
+    version: "{{ bitbucket_base_branch }}"
+    force: yes
+
 - name: Create a new branch
   git:
     repo: "{{ bitbucket_repo_url }}"
