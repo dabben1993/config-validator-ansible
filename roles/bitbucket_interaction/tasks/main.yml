@@ -31,8 +31,15 @@
     dest: "{{ bitbucket_local_path }}/output/new_file.txt"
   register: new_file
 
+- name: Add all files to git
+  command: git add .
+  args:
+    chdir: "{{ bitbucket_local_path }}"
+  register: add_result
+  changed_when: add_result.rc == 0
+
 - name: Commit changes
-  command: git add . && commit -m "{{ bitbucket_commit_message }}"
+  command: commit -am "{{ bitbucket_commit_message }}"
   args:
     chdir: "{{ bitbucket_local_path }}"
   register: commit_result
