@@ -14,13 +14,6 @@
     version: "{{ bitbucket_base_branch }}"
     force: yes
 
-- name: Delete local branch
-  command: git branch -d "{{ bitbucket_branch_to_commit }}"
-  args:
-    chdir: "{{bitbucket_local_path }}"
-  tags:
-    - delete branch
-
 - name: Create new branch
   command: git checkout -b "{{ bitbucket_branch_to_commit }}"
   args:
