@@ -1,6 +1,6 @@
 ---
 - name: Clone repository from bitbucket
-  bitbucket_clone:
+  esp.bitbucket.bitbucket_clone:
     branch: "{{ bitbucket_branch_to_clone }}"
     url: "{{ bitbucket_repo_url }}"
     token: "{{ bitbucket_access_token }}"
