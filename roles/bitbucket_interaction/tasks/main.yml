@@ -20,13 +20,14 @@
     dest: "{{ bitbucket_local_path }}/output/new_file.txt"
   register: new_file
 
-- name: Commit and push to Bitbucket
-  git:
-    repo: "{{ bitbucket_repo_url }}"
-    dest: "{{ bitbucket_local_path }}"
-    src: "{{ new_file.dest }}"
-    remote: origin
-    version: "{{ bitbucket_branch_to_commit }}"
-    force: yes
-    commit_msg: "{{ bitbucket_commit_message }}"
-    push: yes
+- name: Commit changes
+  command: git commit -am "{{ bitbucket_commit_message }}"
+  args:
+    chdir: "{{ bitbucket_local_path }}"
+  register: commit_result
+  changed_when: commit_result.rc != 0
+
+- name: push changes to bitbucket
+  command: git push origin "{{ bitbucket_branch_to_commit }}"
+  args:
+    chdir: "{{ bitbucket_local_path }}"
