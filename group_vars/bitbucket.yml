@@ -4,6 +4,6 @@ bitbucket_repo_url: "https://x-token-auth:{{ bitbucket_access_token }}@bitbucket
 bitbucket_branch_to_clone: "main"
 bitbucket_branch_to_commit: ""
 bitbucket_commit_message: ""
-bitbucket_local_path: "\\wsl.localhost\Ubuntu-22.04\home\dabben\AWS_Ansible\config-validator-yaml\config-validator-ansible\repos/"
+bitbucket_local_path: "repos/"
 bitbucket_project_key: "config-generator"
 bitbucket_repository: "test"
