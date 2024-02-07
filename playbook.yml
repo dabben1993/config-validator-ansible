@@ -2,6 +2,7 @@
 
 - name: Test S3 Interaction
   hosts: localhost
+  gather_facts: no
   vars_files:
     - group_vars/aws.yml
     - group_vars/bitbucket.yml

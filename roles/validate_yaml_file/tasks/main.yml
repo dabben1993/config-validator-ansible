@@ -1,7 +1,7 @@
 ---
 - name: Run FileValidator script
   command: >
-    python3 "scripts/file_validator"
+    python3 "scripts/file_validator.py"
     --schema-path="cerberus_schema/cerberus_schema.yml"
     --file-path="test5.yml"
     --destination="output"
