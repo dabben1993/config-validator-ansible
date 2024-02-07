@@ -4,3 +4,8 @@
     repo: "{{ bitbucket_repo_url }}"
     dest: "{{ bitbucket_local_path }}"
     clone: yes
+  register: bitbucket_repo
+
+- name: debugging
+  debug:
+    msg: "{{ bitbucket_repo.git_dir_before }} | {{ bitbucket_repo.git_dir_now }}"
