@@ -6,4 +6,4 @@
     - group_vars/aws.yml
     - group_vars/bitbucket.yml
   roles:
-    - s3_interaction
+    - bitbucket_interaction

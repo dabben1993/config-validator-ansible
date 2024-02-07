@@ -1,1 +1,9 @@
 ---
+- name: Clone repository from bitbucket
+  esp.bitbucket_clone:
+    branch: "{{ bitbucket_branch_to_clone }}"
+    url: "{{ bitbucket_repo_url }}"
+    token: "{{ bitbucket_access_token }}"
+    project_key: "{{ bitbucket_project_key }}"
+    repository: "{{ bitbucket_repository }}"
+    repodir: "{{ bitbucket_local_path }}"
