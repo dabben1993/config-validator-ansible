@@ -1,4 +1,7 @@
 ---
-- name: debug
-  debug:
-    msg: "{{bitbucket_repo_url}}"
+- name: Clone bitbucket repo
+  git:
+    repo: "{{ bitbucket_repo_url }}"
+    dest: "{{ bitbucket_local_path }}"
+    clone: yes
+    update: yes
