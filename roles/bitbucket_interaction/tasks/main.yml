@@ -33,7 +33,7 @@
   copy:
     content: |
       "String"
-    dest: "{{ bitbucket_local_path }}/output/new_file.txt"
+    dest: "{{ bitbucket_local_path }}output/new_file.txt"
   register: new_file
 
 - name: Add all files to git
