@@ -17,8 +17,7 @@
   git:
     repo: "{{ bitbucket_repo_url }}"
     dest: "{{ bitbucket_local_path }}/"
-    ref: "{{ bitbucket_branch_to_commit }}"
-    checkout: yes
+    version: "{{ bitbucket_branch_to_commit }}"
     force: yes
 
 - name: Add file
