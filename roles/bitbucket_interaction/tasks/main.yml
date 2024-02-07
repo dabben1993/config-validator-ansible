@@ -32,7 +32,7 @@
   register: new_file
 
 - name: Commit changes
-  command: git add . && commit -am "{{ bitbucket_commit_message }}"
+  command: git add . && commit -m "{{ bitbucket_commit_message }}"
   args:
     chdir: "{{ bitbucket_local_path }}"
   register: commit_result
