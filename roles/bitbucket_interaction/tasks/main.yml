@@ -39,7 +39,7 @@
   changed_when: add_result.rc == 0
 
 - name: Commit changes
-  command: commit -am "{{ bitbucket_commit_message }}"
+  command: git commit -am "{{ bitbucket_commit_message }}"
   args:
     chdir: "{{ bitbucket_local_path }}"
   register: commit_result
