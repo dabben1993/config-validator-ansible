@@ -10,20 +10,18 @@
     msg: "{{ schema_path }} | {{ data_path }} | {{ save_path }}"
 
 - name: Convert Windows paths to Unix paths
-  win_to_unix:
-    paths:
-      - "{{ schema_path }}"
-      - "{{ data_path }}"
-      - "{{ save_path }}"
-  register: converted_paths
+  set_fact:
+    schema_path_unix: "{{ schema_path | regex_replace('\\\\', '/') }}"
+    data_path_unix: "{{ data_path | regex_replace('\\\\', '/') }}"
+    save_path_unix: "{{ save_path | regex_replace('\\\\', '/') }}"
 
 - name: debugging
   debug:
-    msg: "{{ converted_paths.paths[0] }} {{ converted_paths.paths[1] }} {{ converted_paths.paths[2] }}"
+    msg: "{{ schema_path_unix }} {{ data_path_unix }} {{ save_path_unix }}"
 
 
 - name: Run validation script
-  script: scripts/file_validator2.py "{{ converted_paths.paths[0] }} {{ converted_paths.paths[1] }} {{ converted_paths.paths[2] }}
+  script: scripts/file_validator2.py {{ schema_path_unix }} {{ data_path_unix }} {{ save_path_unix }}
   register: file_validator_output
 
 - name: Show output of FileValidator script
