@@ -1,7 +1,7 @@
 ---
 - name: execute inline script
   command:
-    cmd: usr/bin/python3
+    cmd: python3
     stdin: |
       print("hello")
   register: result
