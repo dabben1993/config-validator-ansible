@@ -54,6 +54,7 @@ class FileValidator:
 
     def read_yaml(self):
         try:
+            print("reading yaml")
             with open(self.file_path, 'r') as yaml_file:
                 return yaml.safe_load(yaml_file)
         except Exception as e:
