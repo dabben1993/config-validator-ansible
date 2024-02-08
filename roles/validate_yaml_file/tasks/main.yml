@@ -1,4 +1,14 @@
 ---
+- name: execute inline script
+  command:
+    cmd: usr/bin/python3
+    stdin: |
+      print("hello")
+  register: result
+
+- debug:
+    msg: "{{ result }}"
+
 - name:
   become: yes
   shell: "pip3 install structlog cerberus pyyaml"
