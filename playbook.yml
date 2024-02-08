@@ -6,5 +6,6 @@
   vars_files:
     - group_vars/aws.yml
     - group_vars/bitbucket.yml
+    - group_vars/validate_yaml.yml
   roles:
     - validate_yaml_file
