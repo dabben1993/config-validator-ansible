@@ -6,7 +6,7 @@
   ignore_errors: true
 
 - name: Run FileValidator script
-  shell: "python3 scripts/file_validator.py --schema-path=cerberus_schema/cerberus_schema.yml --file-path=test5.yml --destination=output"
+  shell: "python3 scripts/file_validator.py cerberus_schema/cerberus_schema.yml test5.yml output"
   register: file_validator_output
 
 - name: Show output of FileValidator script
