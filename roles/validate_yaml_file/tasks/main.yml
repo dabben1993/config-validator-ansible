@@ -9,8 +9,21 @@
   debug:
     msg: "{{ schema_path }} | {{ data_path }} | {{ save_path }}"
 
+- name: Convert Windows paths to Unix paths
+  win_to_unix:
+    paths:
+      - "{{ schema_path }}"
+      - "{{ data_path }}"
+      - "{{ save_path }}"
+  register: converted_paths
+
+- name: debugging
+  debug:
+    msg: "{{ converted_paths.paths[0] }} {{ converted_paths.paths[1] }} {{ converted_paths.paths[2] }}"
+
+
 - name: Run validation script
-  script: scripts/file_validator2.py {{ schema_path }} {{ data_path }} {{ save_path }}
+  script: scripts/file_validator2.py "{{ converted_paths.paths[0] }} {{ converted_paths.paths[1] }} {{ converted_paths.paths[2] }}
   register: file_validator_output
 
 - name: Show output of FileValidator script
