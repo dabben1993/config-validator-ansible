@@ -1,33 +1,51 @@
 ---
-- name: debugging
-  debug:
-    msg: '{{ s3_file_name }}'
 
 - name: Download file from S3 bucket
   block:
 
-    - name: Check if file exists in S3 bucket
-      stat:
-        path: "{{ s3_file_name }}"
-        bucket: "{{ s3_bucket_name }}"
-        aws_access_key: "{{ aws_access_key_id }}"
-        aws_secret_key: "{{ aws_secret_access_key }}"
-      register: s3_file_stat
-
-    - name: Fail if file does not exist in S3 bucket
-      fail:
-        msg: "File {{ s3_file_name }} does not exist in S3 bucket {{ s3_bucket_name }}"
-      when: s3_file_stat.stat.exists == False
-
-    - name: Download file from S3 bucket
+    - name: List files from S3 bucket
       aws_s3:
         bucket: "{{ s3_bucket_name }}"
-        object: "{{ s3_file_name }}"
-        dest: "{{ s3_file_local_destination }}"
-        mode: get
-        aws_access_key: "{{ aws_access_key_id }}"
-        aws_secret_key: "{{ aws_secret_access_key }}"
+        region: "{{ aws_region }}"
+        mode: list
+        access_key: "{{ aws_access_key_id }}"
+        secret_key: "{{ aws_secret_access_key }}"
       register: s3_download_result
+      tags:
+        - list
+
+    - name: debug
+      debug:
+        msg: "all good"
+
+    - name: Download a file from S3 bucket
+      amazon.aws.s3_object:
+        bucket: "{{ s3_origin_bucket }}"
+        region: "{{ aws_region }}"
+        object: "{{ s3_file_name }}"
+        dest: "{{ s3_file_local_destination }}{{ s3_file_name }}"
+        mode: get
+        access_key: "{{ aws_access_key_id }}"
+        secret_key: "{{ aws_secret_access_key }}"
+      register: result
+      tags:
+        - download
+
+    - name: debug
+      debug:
+        msg: "{{ result.msg }}"
+      when: result.changed
+
+    - name: Upload file to S3 bucket
+      amazon.aws.s3_object:
+        bucket: "{{ s3_destination_bucket }}"
+        region: "{{ aws_region }}"
+        src: "{{ s3_file_local_destination }}{{ s3_file_name }}"
+        mode: put
+        access_key: "{{ aws_access_key_id }}"
+        secret_key: "{{ aws_secret_access_key }}"
+      tags:
+        - upload
 
   rescue:
     - name: Log error message

@@ -1,0 +1,51 @@
+---
+- name: Clone bitbucket repo
+  git:
+    repo: "{{ bitbucket_repo_url }}"
+    dest: "{{ bitbucket_local_path }}"
+    version: "{{ bitbucket_base_branch }}"
+    clone: yes
+  register: bitbucket_repo
+
+- name: Checkout the base branch
+  git:
+    repo: "{{ bitbucket_repo_url }}"
+    dest: "{{ bitbucket_local_path }}"
+    version: "{{ bitbucket_base_branch }}"
+    force: yes
+
+- name: Create new branch
+  command: git checkout -b "{{ bitbucket_branch_to_commit }}"
+  args:
+    chdir: "{{ bitbucket_local_path }}"
+
+- name: Add directory
+  command: mkdir output
+  args:
+    chdir: "{{ bitbucket_local_path }}"
+
+- name: Add file
+  copy:
+    content: |
+      "String"
+    dest: "{{ bitbucket_local_path }}output/new_file.txt"
+  register: new_file
+
+- name: Add all files to git
+  command: git add .
+  args:
+    chdir: "{{ bitbucket_local_path }}"
+  register: add_result
+  changed_when: add_result.rc == 0
+
+- name: Commit changes
+  command: git commit -am "{{ bitbucket_commit_message }}"
+  args:
+    chdir: "{{ bitbucket_local_path }}"
+  register: commit_result
+  changed_when: commit_result.rc != 0
+
+- name: push changes to bitbucket
+  command: git push origin "{{ bitbucket_branch_to_commit }}"
+  args:
+    chdir: "{{ bitbucket_local_path }}"
