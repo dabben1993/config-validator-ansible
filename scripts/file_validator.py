@@ -16,6 +16,7 @@ class FileValidator:
         self.destination = destination
         self.file_name = file_name
         self.validator = self.load_schema()
+        self.debug()
         self.process_configuration()
 
     def load_schema(self):
@@ -58,3 +59,6 @@ class FileValidator:
         except Exception as e:
             log.error("Error reading YAML file", error=str(e))
             return None
+
+    def debug(self):
+        print("debugging")
