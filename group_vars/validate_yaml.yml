@@ -1,4 +1,4 @@
 ---
-schema_path: "cerberus_schema/cerberus_schema.yml"
-data_path: "test5.yml"
-save_path: "output"
+schema_path: "C:\Users\tbarkman\PycharmProjects\configGeneratorAnsible\config-validator-ansible\cerberus_schema\cerberus_schema.yml"
+data_path: "C:\Users\tbarkman\PycharmProjects\configGeneratorAnsible\config-validator-ansible\test5.yml"
+save_path: "C:\Users\tbarkman\OneDrive - Capgemini\Desktop\Resurser\test"

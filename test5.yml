@@ -1,0 +1,13 @@
+---
+config:
+
+  database:
+    host: localhost
+    port: 5432
+    username: user123
+    password: secret123
+
+  logging:
+    level: INFO
+    file_path: /path/to/logs/app.log
+
