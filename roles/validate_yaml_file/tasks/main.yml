@@ -10,7 +10,7 @@
     msg: "{{ schema_path }} | {{ data_path }} | {{ save_path }}"
 
 - name: Run validation script
-  script: scripts/file_validator2.py {{ schema_path_unix }} {{ data_path_unix }} {{ save_path_unix }}
+  script: scripts/file_validator2.py {{ schema_path }} {{ data_path }} {{ save_path }}
   register: file_validator_output
 
 - name: Show output of FileValidator script
