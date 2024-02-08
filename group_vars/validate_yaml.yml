@@ -1,4 +1,4 @@
 ---
-schema_path: '{{ playbook_dir }}/cerberus_schema/cerberus_schema.yml'
-data_path: '{{ playbook_dir }}/test5.yml.yml'
+schema_path: '{{ playbook_dir }}cerberus_schema/cerberus_schema.yml'
+data_path: '{{ playbook_dir }}test5.yml.yml'
 save_path: '{{ playbook_dir }}output'
