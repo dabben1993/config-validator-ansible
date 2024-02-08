@@ -1,11 +1,7 @@
 ---
 - name: Run FileValidator script
   become: yes
-  shell:
-    python3 scripts/file_validator.py
-    --schema-path=cerberus_schema/cerberus_schema.yml
-    --file-path=test5.yml
-    --destination=output
+  shell: python3 scripts/file_validator.py --schema-path=cerberus_schema/cerberus_schema.yml --file-path=test5.yml --destination=output
   register: file_validator_output
 
 - name: Show output of FileValidator script
