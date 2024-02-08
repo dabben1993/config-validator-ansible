@@ -22,6 +22,7 @@ class FileValidator:
         with open(self.schema_path, 'r') as schema_file:
             schema = yaml.safe_load(schema_file)
             log.info("Schema loaded", schema=schema)
+            print("schema loaded")
             return cerberus.Validator(schema)
 
     def process_configuration(self):
