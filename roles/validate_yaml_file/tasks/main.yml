@@ -9,4 +9,4 @@
 
 - name: Show output of FileValidator script
   debug:
-    msg: "{{ file_validator_output.stdout_lines }}"
+    msg: "{{ file_validator_output }}"
