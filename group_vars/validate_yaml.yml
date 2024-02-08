@@ -1,4 +1,4 @@
 ---
-schema_path: '\\wsl.localhost\Ubuntu-22.04\home\dabben\AWS_Ansible\config-validator-yaml\config-validator-ansible\cerberus_schema\cerberus_schema.yml'
-data_path: '\\wsl.localhost\Ubuntu-22.04\home\dabben\AWS_Ansible\config-validator-yaml\config-validator-ansible\test5.yml.yml'
-save_path: '\\wsl.localhost\Ubuntu-22.04\home\dabben\AWS_Ansible\config-validator-yaml\config-validator-ansible\output'
+schema_path: '/mnt/c/home/dabben/AWS_Ansible/config-validator-yaml/config-validator-ansible/cerberus_schema/cerberus_schema.yml'
+data_path: '/mnt/c/home/dabben/AWS_Ansible/config-validator-yaml/config-validator-ansible/test5.yml.yml'
+save_path: '/mnt/c/home/dabben/AWS_Ansible/config-validator-yaml/config-validator-ansible/output'
